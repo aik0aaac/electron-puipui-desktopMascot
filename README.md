@@ -1,0 +1,2 @@
+# electron-puipui-desktopMascot
+ぷいぷいしているデスクトップマスコットです。
