@@ -1,0 +1,17 @@
+{
+   "style_name": "shiromo01",
+   "images": [
+      "3.png",
+      "2.png",
+      "1.png"
+   ],
+   "orientation": "vertical",
+   "padding": 5,
+   "custom_styles": {
+      "display": "inline-block"
+   },
+   "stylesheet": "css",
+   "path_prefix": "",
+   "output": "png",
+   "enable_cache_busting": true
+}

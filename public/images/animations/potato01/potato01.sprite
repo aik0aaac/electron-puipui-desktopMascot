@@ -1,12 +1,12 @@
 {
    "style_name": "potato01",
    "images": [
-      "4.png",
-      "3.png",
-      "2a.png",
-      "2.png",
+      "1.png",
       "1a.png",
-      "1.png"
+      "2.png",
+      "2a.png",
+      "3.png",
+      "4.png"
    ],
    "orientation": "vertical",
    "padding": 5,

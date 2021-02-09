@@ -1,22 +1,23 @@
-:root {
-  --blur-width: 50px;
-}
+<template>
+  <div class="animation-wrapper">
+    <div class="animation"></div>
+  </div>
+</template>
 
-body {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    0.25turn,
-    transparent,
-    #000 var(--blur-width),
-    #000 calc(100% - var(--blur-width)),
-    transparent
-  );
-}
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
 
+@Options({
+  props: {},
+})
+export default class Potato01 extends Vue {}
+</script>
+
+<style scoped lang="scss">
 /* アニメーション出力部分ラッパーのCSS */
 .animation-wrapper {
-  transform: scale(0.6);
   animation: moveImage ease 6s infinite;
+  transform: scale(0.6);
 }
 @keyframes moveImage {
   0% {
@@ -30,14 +31,15 @@ body {
 
 /* アニメーション出力部分のCSS */
 .animation {
-  width: 720px;
-  height: 540px;
-  background-image: url("./images/animations/potato01/potato01.sprite.png");
+  width: 584px;
+  height: 356px;
+  background-image: url("/images/animations/potato01/potato01.sprite.png");
   background-repeat: no-repeat;
-  animation: displaySpliteImage 0.5s steps(5) infinite;
+  animation: displaySpliteImage 0.5s steps(6) infinite;
 }
 @keyframes displaySpliteImage {
   to {
-    background-position: -5px -2730px;
+    background-position: -5px -2171px;
   }
 }
+</style>
