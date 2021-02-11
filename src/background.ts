@@ -16,14 +16,13 @@ async function createWindow() {
     width: 500,
     height: 800,
     webPreferences: {
-      // Use pluginOptions.nodeIntegration, leave this alone
-      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: (process.env
-        .ELECTRON_NODE_INTEGRATION as unknown) as boolean,
+      // ブラウザがNode.jsの機能を使用できる
+      // ここを`true`にする場合、インターネット上のサイトを使用しない様にすること
+      nodeIntegration: true,
     },
     transparent: true, // 背景の透明化
     frame: false, // フレームを非表示にする
-    resizable: false, // ウィンドウリサイズ禁止
+    // resizable: false, // ウィンドウリサイズ禁止
     alwaysOnTop: true, // 常に最前面に表示
     hasShadow: false, // デスクトップアプリの影をなくす
   });
@@ -38,7 +37,7 @@ async function createWindow() {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string);
     if (!process.env.IS_TEST) {
-      // win.webContents.openDevTools();
+      win.webContents.openDevTools();
     }
   } else {
     createProtocol("app");

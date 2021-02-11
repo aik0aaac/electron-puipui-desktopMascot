@@ -5,26 +5,24 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
-@Options({
-  props: {},
-})
+@Component({})
 export default class Potato01 extends Vue {}
 </script>
 
 <style scoped lang="scss">
 /* アニメーション出力部分ラッパーのCSS */
 .animation-wrapper {
-  animation: moveImage ease 6s infinite;
+  animation: moveImage ease 4s infinite;
   transform: scale(0.6);
 }
 @keyframes moveImage {
   0% {
-    transform: translateX(80%);
+    transform: translateX(70%);
   }
   to {
-    transform: translateX(-85%);
+    transform: translateX(-100%);
   }
 }
 /* アニメーション自体にはsteps刻みでパラパラ漫画としているため、ラッパーに移動用アニメーションを仕込む */
