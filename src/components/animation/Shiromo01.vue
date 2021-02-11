@@ -14,7 +14,8 @@ export default class Shiromo01 extends Vue {}
 <style scoped lang="scss">
 /* アニメーション出力部分ラッパーのCSS */
 .animation-wrapper {
-  transform: scale(0.6) translateX(-10%);
+  width: 100%;
+  transform: translate(20%, -10%) scale(0.6);
 }
 /* アニメーション自体にはsteps刻みでパラパラ漫画としているため、ラッパーに移動用アニメーションを仕込む */
 

@@ -16,4 +16,7 @@ import Animation from "@/components/Animation.vue";
 export default class App extends Vue {}
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+body {
+}
+</style>

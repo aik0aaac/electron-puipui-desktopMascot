@@ -13,16 +13,17 @@ protocol.registerSchemesAsPrivileged([
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 500,
-    height: 800,
+    width: 600,
+    height: 350,
     webPreferences: {
       // ブラウザがNode.jsの機能を使用できる
       // ここを`true`にする場合、インターネット上のサイトを使用しない様にすること
       nodeIntegration: true,
     },
     transparent: true, // 背景の透明化
+    // titleBarStyle: "hidden", // タイトルバーを非表示にする
     frame: false, // フレームを非表示にする
-    // resizable: false, // ウィンドウリサイズ禁止
+    resizable: false, // ウィンドウリサイズ禁止
     alwaysOnTop: true, // 常に最前面に表示
     hasShadow: false, // デスクトップアプリの影をなくす
   });
@@ -36,9 +37,7 @@ async function createWindow() {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string);
-    if (!process.env.IS_TEST) {
-      win.webContents.openDevTools();
-    }
+    // win.webContents.openDevTools(); // DevToolを開く
   } else {
     createProtocol("app");
     // Load the index.html when not in development
@@ -61,7 +60,9 @@ app.on("window-all-closed", () => {
 app.on("activate", () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
 });
 
 // This method will be called when Electron has finished

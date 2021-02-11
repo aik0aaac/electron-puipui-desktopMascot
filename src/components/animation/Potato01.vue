@@ -1,6 +1,8 @@
 <template>
   <div class="animation-wrapper">
-    <div class="animation"></div>
+    <div class="animation-move-wrapper">
+      <div class="animation"></div>
+    </div>
   </div>
 </template>
 
@@ -14,15 +16,39 @@ export default class Potato01 extends Vue {}
 <style scoped lang="scss">
 /* アニメーション出力部分ラッパーのCSS */
 .animation-wrapper {
-  animation: moveImage ease 4s infinite;
-  transform: scale(0.6);
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    0.25turn,
+    transparent,
+    #000 var(--blur-width),
+    #000 calc(100% - var(--blur-width)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    0.25turn,
+    transparent,
+    #000 var(--blur-width),
+    #000 calc(100% - var(--blur-width)),
+    transparent
+  );
+}
+
+/* アニメーション出力部分(移動用)ラッパーのCSS */
+.animation-move-wrapper {
+  animation: moveImage ease-in 7s infinite;
 }
 @keyframes moveImage {
   0% {
-    transform: translateX(70%);
+    transform: translateX(70%) scale(0.6);
+  }
+  50% {
+    transform: translateX(-80%) scale(0.6);
+  }
+  51% {
+    transform: translateX(-80%) scale(-0.6, 0.6);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(70%) scale(-0.6, 0.6);
   }
 }
 /* アニメーション自体にはsteps刻みでパラパラ漫画としているため、ラッパーに移動用アニメーションを仕込む */

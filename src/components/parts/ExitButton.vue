@@ -2,12 +2,9 @@
   <button
     v-on:mouseenter="onMouseEnter"
     v-on:mouseleave="onMouseLeave"
-    class="move-window"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+    @click="exitApp"
+    class="exit-app"
+  ></button>
 </template>
 
 <script lang="ts">
@@ -21,12 +18,12 @@ declare global {
 const electron = window.require("electron");
 
 /**
- * Electronの画面を動かせるボタンを提供するコンポーネント。
+ * Electronのアプリ終了ボタンを提供するコンポーネント。
  */
 @Component({
   components: {},
 })
-export default class ModeWindowButton extends Vue {
+export default class ExitButton extends Vue {
   private onMouseEnter() {
     // 要素にマウスポインタが乗っている間、マウスイベントの無視をやめる
     electron.remote.getCurrentWindow().setIgnoreMouseEvents(false);
@@ -37,45 +34,44 @@ export default class ModeWindowButton extends Vue {
       .getCurrentWindow()
       .setIgnoreMouseEvents(true, { forward: true });
   }
+
+  /**
+   * アプリ終了処理。
+   */
+  private exitApp() {
+    electron.remote.getCurrentWindow().close();
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.move-window,
-.move-window span {
-  cursor: move;
-  -webkit-app-region: drag;
-
-  display: inline-block;
-  transition: all 0.4s;
-  box-sizing: border-box;
-  opacity: calc(var(--control-parts-opacity) * 1.2);
-}
-
-.move-window {
-  position: relative;
+.exit-button {
+  display: block;
   width: var(--button-width);
   height: var(--button-height);
-  background: none;
+  position: relative;
+  background: transparent;
   border: none;
-  appearance: none;
-  span {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: #fff;
-    border-radius: 3px;
+  opacity: var(--control-parts-opacity);
 
-    &:nth-of-type(1) {
-      top: 0;
-    }
-    &:nth-of-type(2) {
-      top: 8px;
-    }
-    &:nth-of-type(3) {
-      bottom: 0;
-    }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(14% - 8px);
+    left: 14%;
+    display: block;
+    width: 100%; /*バツ線の長さ*/
+    height: 8px; /*バツ線の太さ*/
+    background: #fff;
+    transform: rotate(45deg);
+    transform-origin: 0% 50%;
+  }
+  &::after {
+    transform: rotate(-45deg);
+    transform-origin: 100% 50%;
+    left: auto;
+    right: 14%;
   }
 }
 </style>

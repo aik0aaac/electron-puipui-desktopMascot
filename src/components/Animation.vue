@@ -1,12 +1,13 @@
 <template>
   <div class="wrapper">
+    <!-- アプリ終了ボタン -->
+    <exit-button class="exit-button" />
+
     <!-- ウィンドウを動かせるボタン -->
     <move-window-button class="move-window-button" />
-    <!-- ウィンドウを閉じるボタン -->
-    <close-window-button class="close-window-button" />
 
     <!-- アニメーションセレクトリスト -->
-    <select-list
+    <animation-select-list
       :datas="animationList"
       :default-data="currentDisplayAnimation"
       @onChange="changeCurrentDisplayAnimation"
@@ -15,7 +16,7 @@
 
     <!-- アニメーション表示 -->
     <div class="animation-wrapper">
-      <component v-bind:is="currentDisplayAnimation"></component>
+      <component v-bind:is="currentDisplayAnimation.componentName"></component>
     </div>
   </div>
 </template>
@@ -23,19 +24,19 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MoveWindowButton from "@/components/parts/MoveWindowButton.vue";
-import CloseWindowButton from "@/components/parts/CloseWindowButton.vue";
-import SelectList from "@/components/parts/SelectList.vue";
+import ExitButton from "@/components/parts/ExitButton.vue";
+import AnimationSelectList from "@/components/parts/AnimationSelectList.vue";
 import Potato01 from "@/components/animation/Potato01.vue";
 import Shiromo01 from "@/components/animation/Shiromo01.vue";
 
-import AnimationManagement from "@/animationManagement";
+import { AnimationManagement, IAnimationItem } from "@/animationManagement";
 const animationManagement = new AnimationManagement();
 
 @Component({
   components: {
     MoveWindowButton,
-    CloseWindowButton,
-    SelectList,
+    ExitButton,
+    AnimationSelectList,
     Potato01,
     Shiromo01,
   },
@@ -44,17 +45,18 @@ export default class Animation extends Vue {
   /**
    * 表示中のアニメーション。
    */
-  private currentDisplayAnimation = animationManagement.currentDisplayAnimation;
+  private currentDisplayAnimation: IAnimationItem =
+    animationManagement.currentDisplayAnimation;
 
   /**
    * アニメーションリスト。
    */
-  private animationList = animationManagement.animationList;
+  private animationList: IAnimationItem[] = animationManagement.animationList;
 
   /**
    * アニメーション変更時の挙動。
    */
-  private changeCurrentDisplayAnimation(animation: string) {
+  private changeCurrentDisplayAnimation(animation: IAnimationItem) {
     this.currentDisplayAnimation = animation;
   }
 }
@@ -63,18 +65,20 @@ export default class Animation extends Vue {
 <style scoped lang="scss">
 // 全体を包むラッパー
 .wrapper {
+  margin-top: 24px;
   position: relative;
+}
+
+// アプリ終了ボタン
+.exit-button {
+  position: absolute;
+  right: 0;
 }
 
 // ウィンドウを動かせるボタン
 .move-window-button {
   position: absolute;
-  right: 0;
-}
-
-// ウィンドウを閉じるボタン
-.close-window-button {
-  position: absolute;
+  right: calc(var(--button-width) + 16px);
 }
 
 // アニメーションセレクトリスト
@@ -83,21 +87,9 @@ export default class Animation extends Vue {
 
 // アニメーションラッパー
 .animation-wrapper {
-  width: 100%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    0.25turn,
-    transparent,
-    #000 var(--blur-width),
-    #000 calc(100% - var(--blur-width)),
-    transparent
-  );
-  mask-image: linear-gradient(
-    0.25turn,
-    transparent,
-    #000 var(--blur-width),
-    #000 calc(100% - var(--blur-width)),
-    transparent
-  );
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+  overflow-y: hidden;
 }
 </style>
