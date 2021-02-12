@@ -1,5 +1,6 @@
 <template>
   <button
+    v-if="isDisplayMoveButton"
     v-on:mouseenter="onMouseEnter"
     v-on:mouseleave="onMouseLeave"
     class="move-window"
@@ -37,28 +38,34 @@ export default class ModeWindowButton extends Vue {
       .getCurrentWindow()
       .setIgnoreMouseEvents(true, { forward: true });
   }
+
+  /**
+   * ウィンドウ移動ボタンを表示させるかどうか。
+   * Windowsでは`-webkit-app-region: drag;`を使用したウィンドウ移動が出来なかった。
+   * 暫定対応として、本ボタンはWindows環境では表示させないようにする。
+   */
+  private get isDisplayMoveButton(){
+    return window.navigator.userAgent.toLowerCase().indexOf("windows nt") === -1;
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.move-window,
-.move-window span {
-  cursor: move;
+.move-window {
   -webkit-app-region: drag;
+  cursor: move;
 
   display: inline-block;
-  transition: all 0.4s;
-  box-sizing: border-box;
-  opacity: calc(var(--control-parts-opacity) * 1.2);
-}
-
-.move-window {
   position: relative;
   width: var(--button-width);
   height: var(--button-height);
   background: none;
   border: none;
   appearance: none;
+  transition: all 0.4s;
+  box-sizing: border-box;
+  opacity: calc(var(--control-parts-opacity) * 1.2);
+
   span {
     position: absolute;
     left: 0;

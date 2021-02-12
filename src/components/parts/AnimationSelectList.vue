@@ -91,6 +91,7 @@ export default class SelectList extends Vue {
   background-color: #fff;
   border-bottom: 3px solid #fff;
   border-radius: 5px;
+  cursor: pointer;
   opacity: var(--control-parts-opacity);
 
   select {

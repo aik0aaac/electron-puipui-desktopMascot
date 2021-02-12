@@ -90,6 +90,5 @@ export default class Animation extends Vue {
   width: 100vw;
   display: flex;
   justify-content: flex-end;
-  overflow-y: hidden;
 }
 </style>

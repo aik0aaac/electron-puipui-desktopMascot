@@ -52,6 +52,7 @@ export default class ExitButton extends Vue {
   position: relative;
   background: transparent;
   border: none;
+  cursor: pointer;
   opacity: var(--control-parts-opacity);
 
   &::before,

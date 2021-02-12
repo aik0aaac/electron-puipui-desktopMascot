@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, BrowserWindow, screen } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -33,6 +33,9 @@ async function createWindow() {
   win.setIgnoreMouseEvents(true, {
     forward: true,
   });
+
+  // 画面を右下端に移動
+  win.setPosition(screen.getPrimaryDisplay().size.width - 600, screen.getPrimaryDisplay().size.height - 350);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
