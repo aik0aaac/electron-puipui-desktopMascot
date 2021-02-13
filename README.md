@@ -8,7 +8,7 @@ WindowsOSとMacOSに対応しています。
 ![デモ動画GIF](https://raw.githubusercontent.com/aik0aaac/molmot-desktopMascot/images/demo.gif "デモ")
 
 # インストール方法
-- [こちら](https://github.com/aik0aaac/molmot-desktopMascot/releases)のページに移動
+- [こちら(Releases)](https://github.com/aik0aaac/molmot-desktopMascot/releases)のページに移動
 - MacOSの場合: ``をDL&ZIP解凍してから``を起動してください
   - インストーラを経由したくない場合は``を実行すると即起動できます
 - WindowsOSの場合: ``をDL&ZIP解凍してから``を起動してください
