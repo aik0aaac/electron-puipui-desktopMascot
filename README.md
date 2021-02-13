@@ -14,7 +14,7 @@ WindowsOSとMacOSに対応しています。
   - インストーラを経由したくない場合は`molmot-desktop-mascot.app`を実行すると即起動できます
 - WindowsOSの場合:
   - `molmot-desktop-mascot_forWindows.zip`をDL&ZIP解凍してから`molmot-desktop-mascot Setup 1.0.0.exe`を起動してください
-  - インストーラを経由したくない場合は`molmot-desktop-mascot.exe`を実行すると即起動できます
+  - ~~インストーラを経由したくない場合は`molmot-desktop-mascot.exe`を実行すると即起動できます~~ → WindowsOS 10にて起動できない不具合がありました、インストーラを介して起動すれば問題ないのでそちらでお試しください
 
 # 画面説明
 ![説明用画像](https://raw.githubusercontent.com/aik0aaac/molmot-desktopMascot/images/description.jpg "説明")
