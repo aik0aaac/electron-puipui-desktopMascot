@@ -9,10 +9,12 @@ WindowsOSとMacOSに対応しています。
 
 # インストール方法
 - [こちら(Releases)](https://github.com/aik0aaac/molmot-desktopMascot/releases)のページに移動
-- MacOSの場合: ``をDL&ZIP解凍してから``を起動してください
-  - インストーラを経由したくない場合は``を実行すると即起動できます
-- WindowsOSの場合: ``をDL&ZIP解凍してから``を起動してください
-  - インストーラを経由したくない場合は``を実行すると即起動できます
+- MacOSの場合: 
+  - `molmot-desktop-mascot_forMac.zip`をDL&ZIP解凍してから`molmot-desktop-mascot-0.1.0.dmg`を起動してください
+  - インストーラを経由したくない場合は`molmot-desktop-mascot.app`を実行すると即起動できます
+- WindowsOSの場合:
+  - `molmot-desktop-mascot_forWindows.zip`をDL&ZIP解凍してから`molmot-desktop-mascot Setup 1.0.0.exe`を起動してください
+  - インストーラを経由したくない場合は`molmot-desktop-mascot.exe`を実行すると即起動できます
 
 # 画面説明
 ![説明用画像](https://raw.githubusercontent.com/aik0aaac/molmot-desktopMascot/images/description.jpg "説明")
